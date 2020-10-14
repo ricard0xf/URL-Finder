@@ -11,13 +11,13 @@ O código funciona assim:
 ### Como usar
 
 1. Primeiro, baixe o script:
-|| $ wget https://raw.githubusercontent.com/ricardobap15/URL-Finder/master/script.sh ||
+`$ wget https://raw.githubusercontent.com/ricardobap15/URL-Finder/master/script.sh`
 
 2. Dê a permissão de execução:
-|| $ chmod +x script.sh ||
+`$ chmod +x script.sh`
 
 3. Execute :)
-|| $ ./script.sh [DOMÍNIO]
+`$ ./script.sh [DOMÍNIO]`
 
 
 
