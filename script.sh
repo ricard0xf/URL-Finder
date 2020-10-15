@@ -12,12 +12,18 @@ else
 
 wget $1 2>/dev/null
 
-cat index.html | grep "href=\"http" | cut -d "/" -f 3 | cut -d "\"" -f 1 | cut -d "?" -f 1 | grep -v "<" | sort -u  > /tmp/urls
+sed -i "s/ /\n/g" index.html
+grep "href=\"http" index.html > /tmp/url1
+cut -d "\"" -f 2 /tmp/url1 | sort -u > /tmp/url2
+awk -F / '{print $1 $2"//"$3}' /tmp/url2 | sort -u  > /tmp/url3
 
-cat /tmp/urls
+cat /tmp/url3 
+
 echo "========================================================================="
 
-for url in $(cat /tmp/urls); do  host $url; done | grep "has address" | sort -u  > /tmp/ips
+awk -F / '{print $3}' /tmp/url3 > /tmp/url4
+
+for site in $(cat /tmp/url4); do  host $site; done | grep "has address" | sort -u  > /tmp/ips
 
 echo "		          [+] IPs em: $1"
 echo "========================================================================="
@@ -28,4 +34,3 @@ rm index.html
 # Remove o download do HTML da página para evitar acumulações. Certifique-se de sempre ver se não tem outro arquivo importante com o mesmo nome!
 
 fi
- 
