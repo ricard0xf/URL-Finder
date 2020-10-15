@@ -7,7 +7,7 @@ then
 	echo "Ex: $0 exemplo.com"
 else
 	echo "========================================================================"
-	echo "		          [+] URLs em: $1"
+	echo "		        [+] URLs em: $1"
 	echo "========================================================================"
 
 wget $1 2>/dev/null
@@ -25,7 +25,7 @@ awk -F / '{print $3}' /tmp/url3 > /tmp/url4
 
 for site in $(cat /tmp/url4); do  host $site; done | grep "has address" | sort -u  > /tmp/ips
 
-echo "		          [+] IPs em: $1"
+echo "		        [+] IPs em: $1"
 echo "========================================================================="
 cat /tmp/ips
 echo "========================================================================="
